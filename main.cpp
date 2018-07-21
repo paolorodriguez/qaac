@@ -90,7 +90,7 @@ public:
     }
     void flush() {
         if (m_verbose) std::fputws(m_message.c_str(), stderr);
-        if (m_console_visible &&
+        if (m_verbose && m_console_visible &&
             m_last_tick_stderr - m_last_tick_title > m_interval * 4)
         {
             std::vector<wchar_t> s(m_message.size() + 1);
@@ -749,7 +749,7 @@ void finalize_m4a(MP4SinkBase *sink, IEncoder *encoder,
         }
     }
     sink->writeTags();
-    sink->writeBitrates();
+    sink->writeBitrates(stat->overallBitrate() * 1000.0 + .5);
     if (!opts.no_optimize)
         do_optimize(sink->getFile(), ofilename, opts.verbose);
     sink->close();
