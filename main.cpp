@@ -534,7 +534,6 @@ bool accept_tag(const std::string &name)
         std::regex("log"),
         std::regex("majorbrand"),      /* XXX: ffmpeg metadata for mp4 */
         std::regex("minorversion"),    /* XXX: ffmpeg metadata for mp4 */
-        std::regex("replaygain.*"),
     };
     std::string ss;
     for (const char *s = name.c_str(); *s; ++s)
